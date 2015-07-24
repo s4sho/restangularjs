@@ -1,0 +1,6 @@
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /codeigniter/restangularjs/index.php/$1 [L]
+
+ErrorDocument 404 /codeigniter/restangularjs/index.php
