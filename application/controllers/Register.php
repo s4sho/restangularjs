@@ -34,6 +34,20 @@ class Register extends REST_Controller
 
     public function index_post()
     {
+		//var_dump($this->post("user")); return;
+		$data = $this->post("user");
+		$this->load->library('form_validation');
+		$this->form_validation->set_data($data);
+		$this->form_validation->set_error_delimiters($suffix='', $prefix='');
+		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[3]|max_length[14]|callback_check_if_username_exists');
+        $this->form_validation->set_rules('email', 'Email Adress', 'trim|required|min_length[6]|max_length[50]|valid_email|callback_check_if_email_exists'); 
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[6]|max_length[50]|matches[password_conf]');   
+        $this->form_validation->set_rules('password_conf', 'Confirm Password', 'trim|required|min_length[6]|max_length[50]');
+        if ($this->form_validation->run() == FALSE)
+        {
+			$response = array('status'=>'invalid', 'message'=>$this->form_validation->error_string());
+            $this->response($response, 200);
+        }
         if( ! $this->post("user"))
         {
                 $this->response(NULL, 400);
@@ -77,6 +91,7 @@ class Register extends REST_Controller
         
         if ($result->num_rows() > 0)
         {
+			$this->form_validation->set_message('check_if_email_exists', 'The {field} is already in use');
             return FALSE;
         }
         else
@@ -92,6 +107,7 @@ class Register extends REST_Controller
         
         if ($result->num_rows() > 0)
         {
+			$this->form_validation->set_message('check_if_username_exists', 'The username is already in use');
             return FALSE;
         }
         else

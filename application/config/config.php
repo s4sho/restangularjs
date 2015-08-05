@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-$config['base_url'] = 'http://localhost/codeigniter/restangularjs';
+$config['base_url'] = 'http://localhost/maja/restangularjs';
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +37,7 @@ $config['index_page'] = 'index.php';
 |--------------------------------------------------------------------------
 |
 */
-$config['admin_email']	= 'WRITE YOUR E-MAIL';
+$config['admin_email']	= 'aleks4nd3r@gmail.com';
 
 /*
 |--------------------------------------------------------------------------
@@ -45,7 +45,7 @@ $config['admin_email']	= 'WRITE YOUR E-MAIL';
 |--------------------------------------------------------------------------
 |
 */
-$config['bot_email']	= 'WRITE YOUR E-MAIL';
+$config['bot_email']	= 'aleks4nd3r@gmail.com';
 
 
 /*
@@ -57,7 +57,7 @@ $config['bot_email']	= 'WRITE YOUR E-MAIL';
 |
 */
 
-$config['salt']	= 'WRITE YOUR SALT';
+$config['salt']	= 'GiL17usS9E9OepsOG2q8y3BJM06C5gEI';
 
 /*
 |--------------------------------------------------------------------------
@@ -388,7 +388,7 @@ $config['encryption_key'] = '';
 $config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'ci_session';
 $config['sess_expiration'] = 7200;
-$config['sess_save_path'] = NULL;
+$config['sess_save_path'] = 'C:\Users\shum\Documents\Freelancer\sessions';
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 300;
 $config['sess_regenerate_destroy'] = FALSE;

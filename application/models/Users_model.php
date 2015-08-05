@@ -73,7 +73,8 @@ class Users_model extends CI_Model {
             return array(
                     "username"	=>		$user["username"],
                     "email"     =>		$user["email"],
-                    "password"	=>		sha1($user["password"])
+                    //"password"	=>		sha1($user["password"])
+					"password"	=>		sha1($this->config->item('salt').$user["password"])
             );
     }
 
@@ -102,9 +103,9 @@ class Users_model extends CI_Model {
                 'smtp_host' => 'ssl://smtp.googlemail.com',
                 'smtp_port' => 465,
 				// Insert your e-mail
-                'smtp_user' => 'YOUR G_MAIL',
+                'smtp_user' => 'aleks4nd3r@gmail.com',
 				// Insert your password
-                'smtp_pass' => 'PASSWORD'
+                'smtp_pass' => 'Fr33lanc3r'
         );
 
         $this->load->library('email',$config);
@@ -114,7 +115,7 @@ class Users_model extends CI_Model {
 
         $this->email->set_mailtype('html');
 		// Insert your e-mail
-        $this->email->from('YOUR G_MAIL','My project');
+        $this->email->from('aleks4nd3r@gmail.com','My project');
         $this->email->to($email);
         $this->email->subject('Email validation');
         $langlang = $this->session->userdata('language');

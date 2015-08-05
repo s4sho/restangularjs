@@ -52,6 +52,16 @@ class Books extends REST_Controller
 	
 	public function index_post()
 	{
+		if ($this->session->userdata('logged_in'))
+        {
+
+        }
+        else
+        {
+            //not logged in
+			$response = array('status'=>'not_logged_in');
+			$this->response($response, 401);
+        }
 		if( ! $this->post("book"))
 		{
 			$this->response(NULL, 400);
@@ -70,7 +80,16 @@ class Books extends REST_Controller
 	
 	public function index_put($id)
 	{
-		echo "Inside of index_put";
+		if ($this->session->userdata('logged_in'))
+        {
+
+        }
+        else
+        {
+            //not logged in
+			$response = array('status'=>'not_logged_in');
+			$this->response($response, 401);
+        }
 		
 		if( ! $this->put("book") || ! $id)
 		{
@@ -90,6 +109,16 @@ class Books extends REST_Controller
 	
 	public function index_delete($id)
 	{
+		if ($this->session->userdata('logged_in'))
+        {
+
+        }
+        else
+        {
+            //not logged in
+			$response = array('status'=>'not_logged_in');
+			$this->response($response, 401);
+        }
 		if( ! $id)
 		{
 			$this->response(NULL, 400);
